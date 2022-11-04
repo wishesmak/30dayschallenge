@@ -17,7 +17,7 @@ const Board = () => {
         {board.map((cell) => (
           <div
             key={cell}
-            className="w-[50px] h-[50px] border-2 border-black transition hover:bg-gray-200 cursor-pointer"
+            className="w-[50px] h-[50px] border-2 border-black transition hover:bg-violet-200 hover:border-violet-500 cursor-pointer "
           ></div>
         ))}
       </div>
