@@ -9,7 +9,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 interface IAuthContext {
   signIn: () => void;
   signOut: () => void;
-  currentUser: IUser;
+  currentUser: IUser | null;
 }
 
 interface Props {
@@ -66,7 +66,7 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
     setCurrentUser(storedUser);
   }, [storedUser]);
 
-  const value = { signIn, signOut, currentUser };
+  const value: IAuthContext = { signIn, signOut, currentUser };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

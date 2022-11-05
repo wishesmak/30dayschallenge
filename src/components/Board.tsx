@@ -1,22 +1,16 @@
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
+import { useApp } from "../contexts/AppContext";
+import initialBoard from "../utils/initialBoard";
 
 const Board = () => {
-  const [board, setBoard] = useState<number[]>([]);
-
-  useLayoutEffect(() => {
-    const testBoard = [];
-
-    for (let i = 0; i < 30; i++) testBoard.push(i);
-
-    setBoard(testBoard);
-  }, []);
+  const { activeChallenge } = useApp();
 
   return (
     <div className="flex items-center justify-center boardHeight">
       <div className="w-[340px] flex flex-wrap gap-2">
-        {board.map((cell) => (
+        {activeChallenge?.board.map((cell) => (
           <div
-            key={cell}
+            key={cell.id}
             className="w-[50px] h-[50px] border-2 border-black transition hover:bg-violet-200 hover:border-violet-500 cursor-pointer "
           ></div>
         ))}
